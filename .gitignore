@@ -1,0 +1,14 @@
+# Folders
+node_modules/
+**/node_modules/
+.next/
+__pycache__/
+venv/
+
+# Environment files
+.env
+frontend/.env*
+backend/.env
+
+# OS files
+.DS_Store
