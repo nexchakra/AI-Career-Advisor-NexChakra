@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+/* Root layout wrapper */
+.dashboard-root {
+  display: flex;
+  background-color: #08090c;
+  min-height: 100vh;
+  color: white;
+  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Playfair Display applied via utility class — used on all h1 headings */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ── Stat card base ─────────────────────────────────────────── */
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border-width: 1px;
+  border-left-width: 4px;
+  border-color: rgba(255,255,255,0.05);
+  background-color: rgba(255,255,255,0.02);
+  transition: background-color 0.2s;
+}
+.stat-card:hover {
+  background-color: rgba(255,255,255,0.04);
+}
+
+.stat-card--indigo  { border-left-color: rgb(99,102,241);  }
+.stat-card--violet  { border-left-color: rgb(139,92,246);  }
+.stat-card--amber   { border-left-color: rgb(245,158,11);  }
+.stat-card--emerald { border-left-color: rgb(16,185,129);  }
+.stat-card--zinc    { border-left-color: rgb(113,113,122); }
+
+.stat-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.stat-card__label {
+  color: rgb(113,113,122);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.stat-card__value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: white;
+}
+.stat-card__hint {
+  font-size: 0.7rem;
+  color: rgb(82,82,91);
+  margin-top: 0.25rem;
+}
