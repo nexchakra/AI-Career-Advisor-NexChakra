@@ -350,32 +350,32 @@ async def get_interview_questions(request: InterviewPrepRequest):
         raise HTTPException(status_code=500, detail="Failed to generate interview questions")
 
 
-# ─── SOUL CHAT ───────────────────────────────────────────────────────────────
+─── SOUL CHAT ───────────────────────────────────────────────────────────────
 
-# @app.post("/career-soul-chat")
-# async def soul_chat(request: ChatRequest):
-#     system_prompt = (
-#         "You are 'Soul', a warm and direct career mentor for students and professionals of ALL fields — "
-#         "tech, medicine, arts, business, design, law, and more. "
-#         "Give honest, empathetic advice. Be concise (2-4 sentences max). "
-#         "If stressed, validate first. If stuck, give one clear next step."
-#     )
-#     try:
-#         # Build multi-turn history
-#         messages = [{"role": "system", "content": system_prompt}]
-#         for h in (request.history or [])[-6:]:   # keep last 6 turns for context
-#             messages.append({"role": h["role"], "content": h["content"]})
-#         messages.append({"role": "user", "content": request.message})
+@app.post("/career-soul-chat")
+async def soul_chat(request: ChatRequest):
+    system_prompt = (
+        "You are 'Soul', a warm and direct career mentor for students and professionals of ALL fields — "
+        "tech, medicine, arts, business, design, law, and more. "
+        "Give honest, empathetic advice. Be concise (2-4 sentences max). "
+        "If stressed, validate first. If stuck, give one clear next step."
+    )
+    try:
+        # Build multi-turn history
+        messages = [{"role": "system", "content": system_prompt}]
+        for h in (request.history or [])[-6:]:   # keep last 6 turns for context
+            messages.append({"role": h["role"], "content": h["content"]})
+        messages.append({"role": "user", "content": request.message})
 
-#         res = client.chat.completions.create(
-#             messages=messages,
-#             model="llama-3.3-70b-versatile",
-#             max_tokens=250,
-#             temperature=0.6,
-#         )
-#         return {"response": res.choices[0].message.content.strip()}
-#     except Exception:
-#         raise HTTPException(status_code=500, detail="Soul is resting. Try again shortly.")
+        res = client.chat.completions.create(
+            messages=messages,
+            model="llama-3.3-70b-versatile",
+            max_tokens=250,
+            temperature=0.6,
+        )
+        return {"response": res.choices[0].message.content.strip()}
+    except Exception:
+        raise HTTPException(status_code=500, detail="Soul is resting. Try again shortly.")
 
 
 # ─── MENTOR MATCH ────────────────────────────────────────────────────────────
